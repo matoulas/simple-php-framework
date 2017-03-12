@@ -2,7 +2,8 @@
 
 namespace Api\Controllers;
 
-use Api\Core\Controller;
+use Api\Core\Controller,
+    Api\Models\Home as HomeModel;
 
 class Home extends Controller {
 
@@ -20,6 +21,9 @@ class Home extends Controller {
         $this->assets = [
             "title" => "Simple Php Framework"
         ];
+
+        $home  = new HomeModel();
+        $home->getInfo();
 
         $this->loadView("main/home.view", $data);
     }
