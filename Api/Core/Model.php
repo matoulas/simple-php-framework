@@ -23,4 +23,8 @@ abstract class Model{
             die();
         }
     }
+
+    protected function fetchAssoc(&$sth) {
+        return $sth->fetch(\PDO::FETCH_ASSOC);
+    }
 }
