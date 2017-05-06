@@ -8,7 +8,7 @@ use Api\Core\Controller,
 class Home extends Controller {
 
     public function index() {
-        $data = [
+        /*$data = [
             "params" => []
         ];
 
@@ -16,15 +16,14 @@ class Home extends Controller {
             $data = [
                 "params" => $this->params
             ];
-        }
+        }*/
 
         $this->assets = [
             "title" => "Simple Php Framework"
         ];
 
         $home  = new HomeModel();
-        $home->getInfo();
-
-        $this->loadView("main/home.view", $data);
+        $name = $home->getInfo();
+        $this->loadView("main/home.view", ["name" => $name]);
     }
 }

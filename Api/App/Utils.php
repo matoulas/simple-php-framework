@@ -6,7 +6,7 @@ class Utils {
 
     public static function isInteger($value) {
         if (preg_match("/^\d+$/", $value, $output_array)) {
-            return true;
+            return intval($value);
         }
         return false;
     }

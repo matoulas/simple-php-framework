@@ -27,7 +27,8 @@ class Router {
 
             foreach (self::$routes as $key => $value) {
                 $regexKey = str_replace('/', '\/', $key);
-                if (preg_match("/^$regexKey\/([^\/].+)?$/", $route, $routeParams)) {
+                $regexKey = str_replace('*', '([^\/].+)?', $regexKey);
+                if (preg_match("/^$regexKey\/$/", $route, $routeParams)) {
                     if (sizeof($routeParams) > 1) {
                         $routeParams = rtrim($routeParams[1], '/');
                         $params = explode('/', filter_var($routeParams, FILTER_SANITIZE_URL));

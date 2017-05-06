@@ -10,9 +10,11 @@ class Home extends Model {
     }
 
     public function getInfo() {
-        $stmt = $this->sqlExec("SELECT COUNT(*) FROM $this->table");
-        while ($data = $stmt->fetch()) {
-            print_r($data);
+        $stmt = $this->sqlExec("SELECT first_name FROM $this->table WHERE id = ?", [1]);
+        $name = "";
+        while ($data = $this->fetchAssoc($stmt)) {
+            $name = $data["first_name"];
         }
+        return $name;
     }
 }

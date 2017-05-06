@@ -27,4 +27,8 @@ abstract class Model{
     protected function fetchAssoc(&$sth) {
         return $sth->fetch(\PDO::FETCH_ASSOC);
     }
+
+    protected function getLastId() {
+        return Database::me()->getDB()->lastInsertId();
+    }
 }
